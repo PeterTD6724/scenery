@@ -8,7 +8,7 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: ['run', 'deploy', 'scenery',
-         '--image', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA',
+         '--image', 'gcr.io/whitef-data-b8eff/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated']
