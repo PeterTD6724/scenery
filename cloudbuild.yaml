@@ -7,7 +7,7 @@ steps:
 
 - name: 'google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
-  args: ['run', 'deploy', 'docker-container',
+  args: ['run', 'deploy', 'scenery',
          '--image', 'whitef-data-b8eff/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
