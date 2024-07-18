@@ -11,7 +11,14 @@ steps:
          '--image', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
-         '--allow-unauthenticated']
+         '--allow-unauthenticated'
+         - '--region'
+         - '$_DEPLOY_REGION'
+         ]
+
+    
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 logsBucket: 'gs://docker-containerpdt'
 
