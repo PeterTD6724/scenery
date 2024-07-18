@@ -1,8 +1,8 @@
 steps:
-- name: 'europe-west1-docker.pkg.dev/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA', '.']
 
-- name: 'europe-west1-docker.pkg.dev/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA']
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
