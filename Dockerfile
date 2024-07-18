@@ -8,7 +8,3 @@ EXPOSE  80
 
 CMD node server.js
 
-
-PROJECT-ID / whitef-data-b8eff
-REPOSITORY / scenery
-IMAGE / scenery
