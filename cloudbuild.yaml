@@ -1,14 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA', '.']
+- name: 'europe-west1-docker.pkg.dev/cloud-builders/docker'
+  args: ['build', '-t', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA', '.']
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA']
+- name: 'europe-west1-docker.pkg.dev/cloud-builders/docker'
+  args: ['push', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA']
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: ['run', 'deploy', 'scenery',
-         '--image', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA',
+         '--image', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated']
@@ -18,6 +18,6 @@ logsBucket: 'gs://docker-containerpdt'
 timeout: '1200s'
 
 images:
-- 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA'
+- 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery:$SHORT_SHA'
 
 serviceAccount: 'firebase-adminsdk-5rbg4@whitef-data-b8eff.iam.gserviceaccount.com'
