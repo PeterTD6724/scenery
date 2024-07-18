@@ -1,14 +1,14 @@
 steps:
 - name: 'cloud-builders/docker'
-  args: ['build', '-t', 'whitef-data-b8eff/scenery:$SHORT_SHA', '.']
+  args: ['build', '-t', 'whitef-data-b8eff/scenery/scenery:$SHORT_SHA', '.']
 
 - name: 'cloud-builders/docker'
-  args: ['push', 'whitef-data-b8eff/scenery:$SHORT_SHA']
+  args: ['push', 'whitef-data-b8eff/scenery/scenery:$SHORT_SHA']
 
 - name: 'google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: ['run', 'deploy', 'scenery',
-         '--image', 'whitef-data-b8eff/scenery:$SHORT_SHA',
+         '--image', 'whitef-data-b8eff/scenery/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated']
