@@ -1,14 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA', '.']
+- name: 'cloud-builders/docker'
+  args: ['build', '-t', 'whitef-data-b8eff/scenery:$SHORT_SHA', '.']
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA']
+- name: 'cloud-builders/docker'
+  args: ['push', 'gcr.io/whitef-data-b8eff/scenery:$SHORT_SHA']
 
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- name: 'google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: ['run', 'deploy', 'docker-container',
-         '--image', 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA',
+         '--image', 'gcr.io/whitef-data-b8eff/scenery:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated']
@@ -18,6 +18,6 @@ logsBucket: 'gs://docker-containerpdt'
 timeout: '1200s'
 
 images:
-- 'gcr.io/whitef-data-b8eff/scenery/scenery:$SHORT_SHA'
+- 'whitef-data-b8eff/scenery:$SHORT_SHA'
 
 serviceAccount: 'firebase-adminsdk-5rbg4@whitef-data-b8eff.iam.gserviceaccount.com'
