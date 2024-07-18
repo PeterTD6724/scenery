@@ -12,11 +12,7 @@ steps:
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated'
-         - '--region'
-         - '$_DEPLOY_REGION'
          ]
-
-    
 options:
   logging: CLOUD_LOGGING_ONLY
 
