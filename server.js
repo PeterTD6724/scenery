@@ -1,6 +1,6 @@
 const http = require('http')
 const server = http.createServer((req, res) => {
     console.log('New connection')
-    res.end("Google closed the last run done image working perfect in europe-west1 region work stopped - commit Fri 19 Jul 23:25.")})
+    res.end("Goog night switching off the fridge.Next job.Deploying Django project on Google build and run it with Cloud run. - commit Fri 19 Jul 23:35.")})
 const PORT = process.env.PORT || 8080
 server.listen(PORT,() => console.log('Listening'))
