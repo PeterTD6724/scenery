@@ -9,10 +9,11 @@ steps:
   entrypoint: 'gcloud'
   args: ['run', 'deploy', 'scenery',
          '--image', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
-         '--cache-from', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
          '--region', 'europe-west1',
          '--platform', 'managed',
-         '--allow-unauthenticated'
+         '--allow-unauthenticated',
+          '--cache-from', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
+          '.'
          ]
 
 logsBucket: 'gs://docker-containerpdt'
