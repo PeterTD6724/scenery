@@ -12,7 +12,7 @@ steps:
          '--region', 'europe-west1',
          '--platform', 'managed',
          '--allow-unauthenticated',
-          '--cache-from', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest'
+          '--cache-from', 'gcr.io/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest'
          ]
 
 logsBucket: 'gs://docker-containerpdt'
