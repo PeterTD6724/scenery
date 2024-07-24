@@ -1,6 +1,15 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA', '.']
+  args: [
+        'build', 
+        '-t', 
+        'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
+         '-t', '
+         europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest,
+         '--cache-from',
+         europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest,
+        '.'
+        ]
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA']
@@ -8,12 +17,7 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: ['-c', 'docker pull gcr.io/$PROJECT_ID/[IMAGE_NAME]:latest || exit 0']
-  args: [
-          'build',
-          '-t', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest',
-          '--cache-from', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest',
-          '.'
-      ]
+  
   args: ['run', 'deploy', 'scenery',
          '--image', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
          '--region', 'europe-west1',
@@ -26,6 +30,7 @@ logsBucket: 'gs://docker-containerpdt'
 timeout: '1200s'
 
 images:
-- 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA'
+  - 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
+  - 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest'
 
 serviceAccount: 'firebase-adminsdk-5rbg4@whitef-data-b8eff.iam.gserviceaccount.com'
