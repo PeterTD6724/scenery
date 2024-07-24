@@ -19,7 +19,7 @@ steps:
   args: ['run', 'deploy', 'scenery',
         '--image europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
         '--region europe-west1',
-        '--platform managed',
+        '--platform', 'managed',
         '--allow-unauthenticated'
         ]
 
