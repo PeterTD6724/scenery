@@ -15,14 +15,16 @@ steps:
   args: ['push', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA']
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'gcloud'
-  args: ['run', 'deploy', 'scenery',
-         '--image', 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
-         '--region', 'europe-west1',
-         '--platform', 'managed',
-         '--allow-unauthenticated'
-         ]
-
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/whitef-data-b8eff/art-demo:latest || exit 0
+      gcloud run deploy scenery \
+        --image europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA \
+        --region europe-west1 \
+        --platform managed \
+        --allow-unauthenticated
 
 logsBucket: 'gs://docker-containerpdt'
 
