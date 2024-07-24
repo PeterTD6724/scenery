@@ -4,7 +4,7 @@ steps:
         'build', 
         '-t', 
         'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
-         '-t', '
+         '-t',
          europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest,
          '--cache-from',
          europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest,
