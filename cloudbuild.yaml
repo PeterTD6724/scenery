@@ -30,7 +30,7 @@ logsBucket: 'gs://docker-containerpdt'
 timeout: '1200s'
 
 images:
-  - europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA,
-  - europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest
+  - 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:$SHORT_SHA',
+  - 'europe-west1-docker.pkg.dev/whitef-data-b8eff/scenery-newrepo/scenery-gcr/art-demo:latest'
 
 serviceAccount: 'firebase-adminsdk-5rbg4@whitef-data-b8eff.iam.gserviceaccount.com'
